@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             grpbMatchInfo = new GroupBox();
+            txtFinalScore = new TextBox();
+            lblFinalScore = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -56,16 +58,21 @@
             btnEditMatch = new Button();
             btnDeleteMatch = new Button();
             btnResetList = new Button();
+            statusStrip = new StatusStrip();
+            statusMatchesCount = new ToolStripStatusLabel();
             grpbMatchInfo.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMatches).BeginInit();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             menuStrip1.SuspendLayout();
+            statusStrip.SuspendLayout();
             SuspendLayout();
             // 
             // grpbMatchInfo
             // 
+            grpbMatchInfo.Controls.Add(txtFinalScore);
+            grpbMatchInfo.Controls.Add(lblFinalScore);
             grpbMatchInfo.Controls.Add(label3);
             grpbMatchInfo.Controls.Add(label2);
             grpbMatchInfo.Controls.Add(label1);
@@ -78,18 +85,35 @@
             grpbMatchInfo.Controls.Add(lblAwayTeam);
             grpbMatchInfo.Controls.Add(txtHomeTeam);
             grpbMatchInfo.Controls.Add(lblHomeTeam);
-            grpbMatchInfo.Location = new Point(63, 31);
+            grpbMatchInfo.Location = new Point(41, 31);
             grpbMatchInfo.Name = "grpbMatchInfo";
-            grpbMatchInfo.Size = new Size(513, 269);
+            grpbMatchInfo.Size = new Size(900, 287);
             grpbMatchInfo.TabIndex = 10;
             grpbMatchInfo.TabStop = false;
             grpbMatchInfo.Text = "Match Information";
+            // 
+            // txtFinalScore
+            // 
+            txtFinalScore.Location = new Point(378, 206);
+            txtFinalScore.Name = "txtFinalScore";
+            txtFinalScore.PlaceholderText = "Example: 2-1";
+            txtFinalScore.Size = new Size(250, 27);
+            txtFinalScore.TabIndex = 22;
+            // 
+            // lblFinalScore
+            // 
+            lblFinalScore.AutoSize = true;
+            lblFinalScore.Location = new Point(273, 209);
+            lblFinalScore.Name = "lblFinalScore";
+            lblFinalScore.Size = new Size(84, 20);
+            lblFinalScore.TabIndex = 21;
+            lblFinalScore.Text = "Final Score:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.OrangeRed;
-            label3.Location = new Point(168, 184);
+            label3.Location = new Point(362, 166);
             label3.Name = "label3";
             label3.Size = new Size(15, 20);
             label3.TabIndex = 20;
@@ -99,7 +123,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.OrangeRed;
-            label2.Location = new Point(161, 95);
+            label2.Location = new Point(357, 86);
             label2.Name = "label2";
             label2.Size = new Size(15, 20);
             label2.TabIndex = 19;
@@ -109,7 +133,7 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.OrangeRed;
-            label1.Location = new Point(166, 50);
+            label1.Location = new Point(357, 46);
             label1.Name = "label1";
             label1.Size = new Size(15, 20);
             label1.TabIndex = 18;
@@ -117,7 +141,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(213, 227);
+            btnAdd.Location = new Point(403, 245);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(94, 29);
             btnAdd.TabIndex = 17;
@@ -128,7 +152,7 @@
             // lblCompetition
             // 
             lblCompetition.AutoSize = true;
-            lblCompetition.Location = new Point(79, 187);
+            lblCompetition.Location = new Point(273, 169);
             lblCompetition.Name = "lblCompetition";
             lblCompetition.Size = new Size(95, 20);
             lblCompetition.TabIndex = 16;
@@ -137,7 +161,7 @@
             // lblDate
             // 
             lblDate.AutoSize = true;
-            lblDate.Location = new Point(79, 141);
+            lblDate.Location = new Point(273, 129);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(44, 20);
             lblDate.TabIndex = 15;
@@ -145,7 +169,7 @@
             // 
             // txtCompetition
             // 
-            txtCompetition.Location = new Point(187, 180);
+            txtCompetition.Location = new Point(378, 166);
             txtCompetition.Name = "txtCompetition";
             txtCompetition.PlaceholderText = "Competition name...";
             txtCompetition.Size = new Size(250, 27);
@@ -153,14 +177,14 @@
             // 
             // dateMatchDate
             // 
-            dateMatchDate.Location = new Point(187, 134);
+            dateMatchDate.Location = new Point(378, 126);
             dateMatchDate.Name = "dateMatchDate";
             dateMatchDate.Size = new Size(250, 27);
             dateMatchDate.TabIndex = 13;
             // 
             // txtAwayTeam
             // 
-            txtAwayTeam.Location = new Point(187, 90);
+            txtAwayTeam.Location = new Point(378, 86);
             txtAwayTeam.Name = "txtAwayTeam";
             txtAwayTeam.PlaceholderText = "Team name...";
             txtAwayTeam.Size = new Size(250, 27);
@@ -169,7 +193,7 @@
             // lblAwayTeam
             // 
             lblAwayTeam.AutoSize = true;
-            lblAwayTeam.Location = new Point(79, 97);
+            lblAwayTeam.Location = new Point(273, 89);
             lblAwayTeam.Name = "lblAwayTeam";
             lblAwayTeam.Size = new Size(88, 20);
             lblAwayTeam.TabIndex = 11;
@@ -177,7 +201,7 @@
             // 
             // txtHomeTeam
             // 
-            txtHomeTeam.Location = new Point(187, 46);
+            txtHomeTeam.Location = new Point(378, 46);
             txtHomeTeam.Name = "txtHomeTeam";
             txtHomeTeam.PlaceholderText = "Team name...";
             txtHomeTeam.Size = new Size(250, 27);
@@ -186,7 +210,7 @@
             // lblHomeTeam
             // 
             lblHomeTeam.AutoSize = true;
-            lblHomeTeam.Location = new Point(79, 53);
+            lblHomeTeam.Location = new Point(273, 49);
             lblHomeTeam.Name = "lblHomeTeam";
             lblHomeTeam.Size = new Size(93, 20);
             lblHomeTeam.TabIndex = 9;
@@ -195,9 +219,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(dgvMatches);
-            groupBox1.Location = new Point(63, 324);
+            groupBox1.Location = new Point(41, 324);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(513, 300);
+            groupBox1.Size = new Size(900, 300);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "Match List";
@@ -213,13 +237,14 @@
             dgvMatches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMatches.EnableHeadersVisualStyles = false;
             dgvMatches.GridColor = SystemColors.Menu;
-            dgvMatches.Location = new Point(6, 21);
+            dgvMatches.Location = new Point(9, 19);
             dgvMatches.MultiSelect = false;
             dgvMatches.Name = "dgvMatches";
+            dgvMatches.ReadOnly = true;
             dgvMatches.RowHeadersVisible = false;
             dgvMatches.RowHeadersWidth = 51;
             dgvMatches.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMatches.Size = new Size(501, 273);
+            dgvMatches.Size = new Size(885, 275);
             dgvMatches.TabIndex = 10;
             dgvMatches.CellMouseDown += dgvMatches_CellMouseDown;
             dgvMatches.DragDrop += dgvMatches_DragDrop;
@@ -249,7 +274,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(645, 28);
+            menuStrip1.Size = new Size(982, 28);
             menuStrip1.TabIndex = 12;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -290,7 +315,7 @@
             // 
             // btnEditMatch
             // 
-            btnEditMatch.Location = new Point(69, 644);
+            btnEditMatch.Location = new Point(175, 645);
             btnEditMatch.Name = "btnEditMatch";
             btnEditMatch.Size = new Size(129, 29);
             btnEditMatch.TabIndex = 13;
@@ -300,7 +325,7 @@
             // 
             // btnDeleteMatch
             // 
-            btnDeleteMatch.Location = new Point(250, 644);
+            btnDeleteMatch.Location = new Point(425, 645);
             btnDeleteMatch.Name = "btnDeleteMatch";
             btnDeleteMatch.Size = new Size(129, 29);
             btnDeleteMatch.TabIndex = 14;
@@ -310,7 +335,7 @@
             // 
             // btnResetList
             // 
-            btnResetList.Location = new Point(441, 644);
+            btnResetList.Location = new Point(675, 645);
             btnResetList.Name = "btnResetList";
             btnResetList.Size = new Size(129, 29);
             btnResetList.TabIndex = 15;
@@ -318,19 +343,37 @@
             btnResetList.UseVisualStyleBackColor = true;
             btnResetList.Click += btnResetList_Click;
             // 
+            // statusStrip
+            // 
+            statusStrip.ImageScalingSize = new Size(20, 20);
+            statusStrip.Items.AddRange(new ToolStripItem[] { statusMatchesCount });
+            statusStrip.Location = new Point(0, 711);
+            statusStrip.Name = "statusStrip";
+            statusStrip.Size = new Size(982, 22);
+            statusStrip.TabIndex = 16;
+            statusStrip.Text = "statusStrip1";
+            // 
+            // statusMatchesCount
+            // 
+            statusMatchesCount.Name = "statusMatchesCount";
+            statusMatchesCount.Size = new Size(0, 16);
+            // 
             // MatchesForm
             // 
             AcceptButton = btnAdd;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(645, 734);
+            ClientSize = new Size(982, 733);
+            Controls.Add(statusStrip);
             Controls.Add(btnResetList);
             Controls.Add(btnDeleteMatch);
             Controls.Add(btnEditMatch);
             Controls.Add(grpbMatchInfo);
             Controls.Add(groupBox1);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "MatchesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MatchesForm";
@@ -342,6 +385,8 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            statusStrip.ResumeLayout(false);
+            statusStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -374,5 +419,9 @@
         private ToolStripMenuItem exportTXTToolStripMenuItem;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem deleteItemToolStripMenuItem;
+        private StatusStrip statusStrip;
+        private ToolStripStatusLabel statusMatchesCount;
+        private TextBox txtFinalScore;
+        private Label lblFinalScore;
     }
 }

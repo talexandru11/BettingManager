@@ -1,15 +1,16 @@
-﻿using System;
+﻿using ProiectPariuri.Exceptions;
+using ProiectPariuri.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using ProiectPariuri.Models;
-using System.ComponentModel;
-using ProiectPariuri.Exceptions;
-using System.Text.Json;
 using System.Linq;
+using System.Text;
+using System.Text.Json;
+//using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ProiectPariuri.Forms
 {
@@ -24,14 +25,25 @@ namespace ProiectPariuri.Forms
             InitializeComponent();
             this.matches=matches;
             dgvMatches.DataSource = matches;
+            dgvMatches.Columns["Id"].HeaderText = "ID";
+            dgvMatches.Columns["HomeTeam"].HeaderText = "Home Team";
+            dgvMatches.Columns["AwayTeam"].HeaderText = "Away Team";
+            dgvMatches.Columns["MatchDate"].HeaderText = "Date";
+            dgvMatches.Columns["Competition"].HeaderText = "Competition";
+            dgvMatches.Columns["FinalScore"].HeaderText = "Final Score";
+            dgvMatches.Columns["DisplayName"].Visible = false;
             dgvMatches.AutoSizeColumnsMode =
             DataGridViewAutoSizeColumnsMode.Fill;
             dgvMatches.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvMatches.ColumnHeadersDefaultCellStyle.BackColor;
             dgvMatches.ColumnHeadersDefaultCellStyle.SelectionForeColor = dgvMatches.ColumnHeadersDefaultCellStyle.ForeColor;
 
-            dgvMatches.Columns["Id"].FillWeight = 35;
+            dgvMatches.Columns["Id"].FillWeight = 45;
         }
 
+        private void UpdateStatusStrip()
+        {
+            statusMatchesCount.Text = $"Total matches: {matches.Count}";
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
@@ -46,6 +58,7 @@ namespace ProiectPariuri.Forms
                 match.AwayTeam = txtAwayTeam.Text;
                 match.MatchDate = dateMatchDate.Value;
                 match.Competition = txtCompetition.Text;
+                match.FinalScore = txtFinalScore.Text;
 
                 matches.Insert(0, match);
                 nextId++;
@@ -53,6 +66,7 @@ namespace ProiectPariuri.Forms
                 txtHomeTeam.Clear();
                 txtAwayTeam.Clear();
                 txtCompetition.Clear();
+                UpdateStatusStrip();
             }
             catch (InvalidMatchException ex)
             {
@@ -113,6 +127,7 @@ namespace ProiectPariuri.Forms
             {
                 ImportMatchesFromJsonFile(openFileDialog.FileName);
             }
+            UpdateStatusStrip();
 
         }
 
@@ -238,6 +253,7 @@ namespace ProiectPariuri.Forms
                 selectedMatch.AwayTeam = txtAwayTeam.Text.Trim();
                 selectedMatch.MatchDate = dateMatchDate.Value;
                 selectedMatch.Competition = txtCompetition.Text.Trim();
+                selectedMatch.FinalScore = txtFinalScore.Text;
 
                 dgvMatches.Refresh();
             }
@@ -258,6 +274,7 @@ namespace ProiectPariuri.Forms
                 (Match)dgvMatches.CurrentRow.DataBoundItem;
 
             matches.Remove(selectedMatch);
+            UpdateStatusStrip();
         }
 
         private void btnDeleteMatch_Click(object sender, EventArgs e)
@@ -286,7 +303,7 @@ namespace ProiectPariuri.Forms
                 txtHomeTeam.Clear();
                 txtAwayTeam.Clear();
                 txtCompetition.Clear();
-
+                UpdateStatusStrip();
             }
         }
 

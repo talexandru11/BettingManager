@@ -15,5 +15,13 @@ namespace ProiectPariuri.Models
         public string Competition { get; set; }
 
         public string FinalScore { get; set; }
+
+        public string DisplayName
+        {
+            get
+            {
+                return $"{HomeTeam} vs {AwayTeam}";
+            }
+        }
     }
 }
